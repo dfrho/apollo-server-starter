@@ -27,13 +27,11 @@ let users = {
     username: 'Dave Davids',
   },
 };
-// mocked authenticated user
-const me = users[1];
 
 // resolvers match schema to actual data
 const resolvers = {
   Query: {
-    me: () => {
+    me: (parent, arg, { me }) => {
       return me;
     },
     user: (parent, { id }) => {
@@ -43,11 +41,19 @@ const resolvers = {
       return Object.values(users);
     },
   },
+  User: {
+    username: user => {
+      return user.username
+    },
+  }
 };
 
 const server = new ApolloServer({
   typeDefs: schema,
   resolvers,
+  context: {
+    me: users[1] // mocked auth user set to context
+  }
 });
 
 server.applyMiddleware({ app, path: '/graphql' });
