@@ -1,6 +1,5 @@
 import 'dotenv/config';
 import cors from 'cors';
-import uuidv4 from 'uuid/v4';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 
@@ -55,9 +54,17 @@ const createUsersWithMessages = async () => {
           text: 'Published the Road to learn React',
         },
       ],
+      dogs: [
+        {
+          name: 'Rocco'
+        },
+        {
+          name: 'Spot'
+        }
+      ]
     },
     {
-      include: [models.Message],
+      include: [models.Message, models.Dog],
     },
   );
 
@@ -72,9 +79,14 @@ const createUsersWithMessages = async () => {
           text: 'Published a complete ...',
         },
       ],
+      dogs: [
+        {
+          name: 'Bubster'
+        }
+      ]
     },
     {
-      include: [models.Message],
+      include: [models.Message, models.Dog],
     },
   );
 };

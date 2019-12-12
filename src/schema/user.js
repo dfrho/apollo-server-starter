@@ -10,5 +10,6 @@ export default gql`
     id: ID!
     username: String!
     messages: [Message!]
+    dogs: [Dog!]
   }
 `;

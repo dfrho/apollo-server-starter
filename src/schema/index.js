@@ -2,6 +2,7 @@ import { gql } from 'apollo-server-express';
 
 import userSchema from './user';
 import messageSchema from './message';
+import dogSchema from './dog';
 
 const linkSchema = gql`
   type Query {
@@ -15,6 +16,6 @@ const linkSchema = gql`
   }
 `;
 
-export default [linkSchema, userSchema, messageSchema];
+export default [linkSchema, userSchema, messageSchema, dogSchema];
 
 // TODO: https://www.apollographql.com/docs/apollo-server/federation/migrating-from-stitching/

@@ -23,6 +23,13 @@ export default {
         },
       });
     },
+    dogs: async (user, args, { models }) => {
+      return await models.Dog.findAll({
+        where: {
+          ownerId: user.id,
+        },
+      });
+    },
   },
 };
 
