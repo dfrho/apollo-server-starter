@@ -4,7 +4,7 @@ export default {
       return await models.Dog.findAll();
     },
     dog: async (parent, { id }, { models }) => {
-      return await models.Dog.findById(id);
+      return await models.Dog.findByPk(id);
     },
   },
 
@@ -23,7 +23,7 @@ export default {
 
   Dog: {
     owner: async (dog, args, { models }) => {
-      return await models.User.findById(message.ownerId);
+      return await models.User.findByPk(message.ownerId);
     },
   },
 };

@@ -2,4 +2,15 @@ import userResolvers from './user';
 import messageResolvers from './message';
 import dogResolvers from './dog';
 
-export default [userResolvers, messageResolvers, dogResolvers];
+import { GraphQLDateTime } from 'graphql-iso-date';
+
+const customScalarResolver = {
+  Date: GraphQLDateTime,
+};
+
+export default [
+  customScalarResolver,
+  userResolvers,
+  messageResolvers,
+  dogResolvers
+];
